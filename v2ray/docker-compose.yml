@@ -1,0 +1,30 @@
+version: '3'
+
+networks:
+  v2ray-tls.net:
+
+services:
+
+  web:
+    image: abiosoft/caddy
+    container_name: web
+    restart: always
+    ports:
+      - "443:443"
+    volumes:
+      - ./www:/www
+      - ./Caddyfile:/etc/Caddyfile
+      - ./certs:/certs:ro
+    depends_on:
+      - myv2ray
+    networks:
+      - v2ray-tls.net
+
+  myv2ray:
+    image: v2ray/official
+    container_name: myv2ray
+    restart: always
+    volumes:
+      - ./server.json:/etc/v2ray/config.json
+    networks:
+      - v2ray-tls.net

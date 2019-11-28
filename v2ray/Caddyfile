@@ -1,0 +1,8 @@
+https://15088.xyz:443 {
+    root /www/
+    tls /certs/15088-cert.pem /certs/15088-pri.key
+    proxy /download myv2ray:44222 {
+        websocket
+        header_upstream -Origin
+    }
+}
