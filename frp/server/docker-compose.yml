@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  frps:
+    image: riftbit/frp-server
+    volumes:
+      - ./frps.ini:/frp_config/frps.ini
+    ports:
+      - 7000:7000
+      - 7080:7080
+      - 7022:7022

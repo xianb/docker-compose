@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  frp-client:
+    image: riftbit/frp-client
+    volumes:
+      - ./frpc.ini:/frp_config/frpc.ini
