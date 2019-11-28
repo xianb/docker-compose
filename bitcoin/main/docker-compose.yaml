@@ -1,0 +1,45 @@
+# version: '2.1'
+
+# networks:
+#   bitcoin_net:
+
+# services:
+#   #images:https://hub.docker.com/r/kylemanna/bitcoind
+#   bitcoin-test:
+#     container_name: bitcoin-test
+#     image: kylemanna/bitcoind
+#     restart: always
+#     ports:
+#       - 8333:8333
+#       - 8332:8332
+#     # environment:
+#       # - MYSQL_DATABASE=mine_cfg
+#     volumes:
+#       - /etc/localtime:/etc/localtime:ro
+#       - ./data:/bitcoin
+#       - ./bitcoin.conf:/bitcoin/.bitcoin/bitcoin.conf
+#     networks:
+#       - bitcoin_net
+
+
+version: '2.1'
+
+services:
+  bitcoin-node:
+    container_name: bitcoin-node
+    image: 4ops/bitcoin-core:v0.18.1
+    restart: always
+    ports:
+      - "8333:8333"
+      - "8332:8332"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /apps/bitcoin:/home/bitcoin/.bitcoin
+    command:
+      - -printtoconsole
+      - -rpcuser=qkabitcoin
+      - -rpcpassword=qkagamecom
+      - -rpcallowip=0.0.0.0/0
+      - -onlynet=ipv4
+      - -txindex
+      - -rpcbind=0.0.0.0

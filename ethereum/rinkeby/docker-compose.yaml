@@ -1,0 +1,19 @@
+version: '2.1'
+
+services:
+  ethereum-rinkeby:
+    container_name: ethereum-rinkeby
+    image: ethereum/client-go
+    restart: always
+    ports:
+      - "8544:8545"
+      - "30302:30303"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /root/.ethereum:/root/.ethereum
+    command:
+      - --rinkeby
+      - --rpc
+      - --rpcaddr=0.0.0.0
+      - --rpcapi="net,web3,eth,shh,debug"
+      # - --syncmode=full

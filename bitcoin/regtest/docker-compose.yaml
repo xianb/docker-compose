@@ -1,0 +1,22 @@
+version: '2.1'
+
+services:
+  bitcoin-regtest:
+    container_name: bitcoin-regtest
+    image: 4ops/bitcoin-core:v0.18.1
+    # restart: always
+    ports:
+      - "18443:18443"
+      - "18444:18444"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      # - /apps/bitcoin:/home/bitcoin/.bitcoin
+    command:
+      - -printtoconsole
+      - -rpcuser=test
+      - -rpcpassword=test
+      - -rpcallowip=0.0.0.0/0
+      - -onlynet=ipv4
+      - -txindex
+      - -rpcbind=0.0.0.0
+      - -regtest

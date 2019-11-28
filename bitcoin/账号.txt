@@ -1,0 +1,12 @@
+2N1ttkChH1nRrUAgJTBZrfcMGBYnQ5qUsTd
+cVLjRChRws4qUR8R3xS7KaoFC41g1vuNHoAVLMa29ioDx41QttDP
+
+bitcoind  -regtest -rpcallowip=0.0.0.0/0 -rpcbind=0.0.0.0
+
+-testnet
+2MysAsC9E6DEyPBbRX6RrMpKezxqSffYPwK
+cTCv8VpEpRpvHxEVL5B6quAF61smdPKwFXZ3WXxaZa6qymFNK6cN
+
+wage bundle stove license large arrow elbow mixed noodle glad cousin almost
+
+#echo "alias bitcoin-cli=\"bitcoin-cli -rpcconnect=bitcoin-regtest -rpcport=18443 -rpcuser=test -rpcpassword=test\"" > /root/.bash_profile | source /root/.bash_profile
