@@ -1,0 +1,21 @@
+version: '2.1'
+
+services:
+  ethereum-local:
+    container_name: ethereum-local
+    image: ethereum/client-go
+    # restart: always
+    ports:
+      - "18544:8545"
+      - "10303:30303"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      # - /root/.ethereum:/root/.ethereum
+    command:
+      - --dev
+      - --dev.period=1 #值为0的时候只有交易的时候才会打包，值为1的时候会主动挖矿
+      - --rpc
+      - --rpcaddr=0.0.0.0
+      - --rpcapi="net,web3,eth,shh,debug"
+      - --nousb #禁用监控和管理USB硬件钱包
+

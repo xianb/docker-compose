@@ -16,4 +16,5 @@ services:
       - --rpc
       - --rpcaddr=0.0.0.0
       - --rpcapi="net,web3,eth,shh,debug"
+      - --nousb #禁用监控和管理USB硬件钱包
       # - --syncmode=full
