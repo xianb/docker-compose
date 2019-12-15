@@ -7,7 +7,7 @@ USAGE:
    geth [options] command [command options] [arguments...]
    
 VERSION:
-   1.9.3-unstable-961aa053-20190822
+   1.9.7-unstable-44b74cfc-20191031
    
 COMMANDS:
    account                            Manage accounts
@@ -198,6 +198,7 @@ DEPRECATED OPTIONS:
   --extradata value                   Block extra data set by the miner (default = client version, deprecated, use --miner.extradata)
   
 MISC OPTIONS:
+  --override.istanbul value           Manually specify Istanbul fork-block, overriding the bundled setting (default: 0)
   --help, -h                          show help
   
 
