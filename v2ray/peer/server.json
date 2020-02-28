@@ -1,0 +1,87 @@
+{
+  "log": {
+    "access": "/var/log/v2ray/access.log",
+    "error": "/var/log/v2ray/error.log",
+    "loglevel": "warning"
+  },
+  "dns": {},
+  "stats": {},
+  "inbounds": [
+    {
+      "port": 9901,
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "b831381d-6324-4d53-ad4f-8cda48b30811",
+            "alterId": 32
+          }
+        ]
+      }
+    },
+    {
+      "port": 10003,
+      "protocol": "socks",
+      "settings": {
+        "ip": "0.0.0.0",
+        "auth": "password",
+        "accounts": [
+          {
+            "user": "testsockq",
+            "pass": "Txy@2020#GO"
+          }
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "tag":"out-0",
+      "settings":{
+        "vnext":[
+          {
+            "users":[
+              {
+                "id":"d323f663-672b-4c22-b433-1af2c0c15b61",
+                "alterId":32
+              }
+            ],
+            "address":"150890.xyz",
+            "port":443
+          }
+        ]
+      },
+      "streamSettings":{
+        "network":"ws",
+        "wsSettings":{
+          "path":"/download"
+        },
+        "tlsSettings":{
+          "serverName":"150890.xyz"
+        },
+        "security":"tls"
+      },
+      "protocol":"vmess"
+    },
+    {
+      "tag": "blocked",
+      "settings": {},
+      "protocol": "blackhole"
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "ip": [
+          "geoip:private"
+        ],
+        "outboundTag": "blocked"
+      }
+    ],
+    "domainStrategy": "AsIs"
+  },
+  "policy": {},
+  "reverse": {},
+  "transport": {}
+}

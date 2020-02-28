@@ -1,0 +1,17 @@
+version: '3'
+
+networks:
+  v2ray-peer:
+
+services:
+  v2ray-peer:
+    image: v2ray/official
+    container_name: v2ray-peer
+    restart: always
+    ports:
+      - 9901:9901
+      - 10003:10003
+    volumes:
+      - ./server.json:/etc/v2ray/config.json
+    networks:
+      - v2ray-peer
