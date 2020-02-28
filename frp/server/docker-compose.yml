@@ -3,6 +3,7 @@ version: '3'
 services:
   frps:
     image: riftbit/frp-server
+    restart: always
     volumes:
       - ./frps.ini:/frp_config/frps.ini
     ports:

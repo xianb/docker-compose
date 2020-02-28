@@ -12,6 +12,7 @@ services:
   vsftpd:
     container_name: vsftpd
     image: fauria/vsftpd
+    restart: always
     environment:
       - FTP_USER=ftp
       - FTP_PASS=mypass
