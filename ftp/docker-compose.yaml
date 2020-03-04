@@ -15,15 +15,13 @@ services:
     restart: always
     environment:
       - FTP_USER=ftp
-      - FTP_PASS=mypass
-      - PASV_ADDRESS=127.0.0.1
+      - FTP_PASS=ftp@xianbin
       - PASV_MIN_PORT=21100
       - PASV_MAX_PORT=21110
     ports:
-      - "20:20"
       - "21:21"
       - "21100-21110:21100-21110"
     volumes:
-      - ./data:/home/vsftpd
+      - ./data:/home/vsftpd/ftp
     networks:
       - ftp
