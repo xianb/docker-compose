@@ -1,0 +1,21 @@
+#
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+version: '2'
+
+services:
+  svn:
+    container_name: tortoisesvn
+    image: elleflorio/svn-server
+    restart: always
+    # environment:
+    #   - SVN_REPONAME=admin
+    ports:
+      - 3690:3690
+      - 21080:80
+    # volumes:
+      # - /etc/localtime:/etc/localtime:ro
+      # - ./data:/home/svn
+      # - ./passwd:/etc/subversion/passwd
