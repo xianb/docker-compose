@@ -1,6 +1,6 @@
-https://150890.xyz:443 {
+https://lua.pw:443 {
     root /www/
-    tls /certs/150890-cert.pem /certs/150890-pri.key
+    tls /certs/lua-cert.crt /certs/lua-key.key
     proxy /download myv2ray:44222 {
         websocket
         header_upstream -Origin
