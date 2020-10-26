@@ -1,0 +1,22 @@
+#
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+version: '2'
+
+networks:
+  sftp:
+
+services:
+  sftp:
+    container_name: sftp
+    image: atmoz/sftp
+    restart: always
+    ports:
+      - "2202:22"
+    volumes:
+      - ./data:/home/sftp
+    command: sftp:123:1234
+    networks:
+      - sftp
