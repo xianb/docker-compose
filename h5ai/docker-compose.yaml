@@ -1,0 +1,22 @@
+#
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+version: '2'
+
+services:
+  svn:
+    container_name: h5ai
+    image: awesometic/h5ai
+    restart: always
+    # environment:
+    #   - HTPASSWD=true
+    #   - HTPASSWD_USER=admin
+    #   - HTPASSWD_PW=123456
+    ports:
+      - 8080:80
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /root/h5aiShare:/h5ai
+      # - /root/h5aiConfig:/config
