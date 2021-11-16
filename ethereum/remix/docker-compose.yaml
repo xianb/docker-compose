@@ -1,0 +1,10 @@
+version: '3.7'
+
+services:
+  remix-ide:
+    container_name: remix-ide
+    image: remixproject/remix-ide
+    restart: always
+    ports:
+      - "8080:80"
+

@@ -1,23 +1,15 @@
-version: '2.1'
+version: '3.7'
 
 services:
   ethereum-node:
-    container_name: ethereum-node
+    container_name: ethereum-main
     image: ethereum/client-go
     restart: always
     ports:
-      - "8545:8545"
-      - "30303:30303"
-    volumes:
+      - 8545:8545
+      - 30303:30303
+    volumes: 
       - /etc/localtime:/etc/localtime:ro
       - /root/.ethereum:/root/.ethereum
     command:
-      - --rpc
-      - --rpcaddr=0.0.0.0
-      - --rpcapi="net,web3,eth,shh,debug"
-      - --nousb #禁用监控和管理USB硬件钱包
-      - --lightpeers=1 
-      - --ws
-      - --wsaddr=0.0.0.0
-      - --wsorigins="*"
       # - --syncmode=full
