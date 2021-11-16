@@ -1,0 +1,114 @@
+{
+  "inbounds": [
+    {
+      "protocol": "socks",
+      "port": 1024,
+      "settings": {
+        "auth": "noauth",
+        "accounts": [
+          {
+            "user": "my-username",
+            "pass": "my-password"
+          }
+        ],
+        "ip": "127.0.0.1",
+        "userLevel": 0
+      }
+    },
+    {
+      "protocol": "http",
+      "port": 2048,
+      "settings": {
+        "timeout": 0,
+        "accounts": [],
+        "allowTransparent": false,
+        "userLevel": 0
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "tag": "direct"
+    },
+    {
+      "tag": "blocked",
+      "settings": {},
+      "protocol": "blackhole"
+    },
+    {
+      "tag": "txy",
+      "protocol": "vmess",
+      "settings": {
+        "vnext": [
+          {
+            "address": "203.195.165.142",
+            "port": 9910,
+            "users": [
+              {
+                "id": "b831381d-6324-4d53-ad4f-8cda48b30809",
+                "alterId": 32
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "tag":"bwg",
+      "protocol":"vmess",
+      "settings":{
+        "vnext":[
+          {
+            "address":"bwgg.pw",
+            "port":443,
+            "users":[
+              {
+                "id":"d323f663-672b-4c22-b433-1af2c0c15b62",
+                "alterId":32
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings":{
+        "network":"ws",
+        "wsSettings":{
+          "path":"/rache"
+        },
+        "tlsSettings":{
+          "serverName":"bwgg.pw"
+        },
+        "security":"tls"
+      }
+    }
+  ],
+  "routing": {
+    "name": "绕过本地和CN地址",
+    "domainStrategy": "IPIfNonMatch",
+    "rules": [
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "domain": [
+          "localhost",
+          "geosite:cn",
+          "feixiaohao.com"
+        ]
+      },
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "ip": [
+          "geoip:private",
+          "geoip:cn"
+        ]
+      },
+      {
+        "type": "field",
+        "outboundTag": "txy",
+        "port": "0-65535"
+      }
+    ]
+  }
+}

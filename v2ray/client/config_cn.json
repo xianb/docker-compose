@@ -1,0 +1,132 @@
+{
+  "inbounds": [
+    {
+      "protocol": "socks",
+      "port": 1024,
+      "settings": {
+        "auth": "noauth",
+        "accounts": [
+          {
+            "user": "my-username",
+            "pass": "my-password"
+          }
+        ],
+        "ip": "127.0.0.1",
+        "userLevel": 0
+      }
+    },
+    {
+      "protocol": "http",
+      "port": 2048,
+      "settings": {
+        "timeout": 0,
+        "accounts": [],
+        "allowTransparent": false,
+        "userLevel": 0
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "tag": "direct"
+    },
+    {
+      "tag": "blocked",
+      "settings": {}, 
+      "protocol": "blackhole"
+    },
+    {
+      "tag": "txy",
+      "protocol": "vmess",
+      "settings": {
+        "vnext": [
+          {
+            "address": "203.195.165.142",
+            "port": 9910,
+            "users": [
+              {
+                "id": "b831381d-6324-4d53-ad4f-8cda48b30809",
+                "alterId": 32
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "tag":"bwg",
+      "protocol":"vmess",
+      "settings":{
+        "vnext":[
+          {
+            "address":"bwgg.pw",
+            "port":443,
+            "users":[
+              {
+                "id":"d323f663-672b-4c22-b433-1af2c0c15b62",
+                "alterId":32
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings":{
+        "network":"ws",
+        "wsSettings":{
+          "path":"/rache"
+        },
+        "tlsSettings":{
+          "serverName":"bwgg.pw"
+        },
+        "security":"tls"
+      }
+    }
+  ],
+  "routing": {
+    "name": "常用国外域名",
+    "domainStrategy": "IPIfNonMatch",
+    "rules": [
+      {
+        "type": "field",
+        "outboundTag": "txy",
+        "domain": [
+          "geosite:geolocation-!cn",
+          "v2ray.com",
+          "bandwagonhost.com",
+          "s3.amazonaws.com",
+          "bannedbook.org",
+          "torproject.org",
+          "gleam.io",
+
+          "huobi.com",
+          "zb.com",
+          "etherscan.io",
+          "binance.com",
+          "zbg.com",
+          "aex.com",
+          "dapp.com",
+          "dappradar.com",
+          "uniswap.org",
+          "sushi.com",
+          "sosob.com",
+          "big.one",
+          "bybit.com",
+          "bloks.io",
+          "ftx.com",
+          "bitfinex.com",
+          "qkl123.com",
+          "aicoin.com",
+          "gate.io"
+        ]
+      },
+      {
+        "type": "field",
+        "outboundTag": "blocked",
+        "domain": [
+          "ad_list.com"
+        ]
+      }
+    ]
+  }
+}
