@@ -1,6 +1,23 @@
 version: '3'
 
+networks:version: '3'
+
 networks:
+  v2ray-peer:
+
+services:
+  v2ray-peer:
+    image: v2ray/official
+    container_name: v2ray-peer
+    restart: always
+    ports:
+      - 9901:9901
+      - 10003:10003
+    volumes:
+      - ./server.json:/etc/v2ray/config.json
+    networks:
+      - v2ray-peer
+	  
   v2ray-tls.net:
 
 services:
@@ -13,7 +30,24 @@ services:
       - "443:443"
     volumes:
       - ./www:/www
-      - ./Caddyfile:/etc/Caddyfile
+      - ./Caddyfile:/etc/Caddyfileversion: '3'
+
+networks:
+  v2ray-peer:
+
+services:
+  v2ray-peer:
+    image: v2ray/official
+    container_name: v2ray-peer
+    restart: always
+    ports:
+      - 9901:9901
+      - 10003:10003
+    volumes:
+      - ./server.json:/etc/v2ray/config.json
+    networks:
+      - v2ray-peer
+	  
       - ./certs:/certs:ro
     depends_on:
       - myv2ray

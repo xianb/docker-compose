@@ -1,0 +1,14 @@
+# docker 日志查看器
+version: "3"
+services:
+  dozzle:
+    container_name: dozzle
+    image: amir20/dozzle:latest
+    environment:
+      - DOZZLE_USERNAME=dozzle
+      - DOZZLE_PASSWORD=C3077xian
+      - DOZZLE_KEY=EUQc6sJivzzPcKa1
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 9999:8080
